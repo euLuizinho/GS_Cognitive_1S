@@ -1,4 +1,4 @@
-# GS_Cognitive_1S — GUIA DE ESTUDO DEFINITIVO & MANUAL DE ARGUIÇÃO
+﻿# GS_Cognitive_1S — GUIA DE ESTUDO DEFINITIVO & MANUAL DE ARGUIÇÃO
 ## Detecção Inteligente de Buracos em Vias Urbanas com YOLOv8
 **FIAP · Global Solution 2026.2 · Cognitive Computing & Computer Vision**  
 **Projeto Individual:** GS_Cognitive_1S | **Docente:** Prof. Arnaldo Jr | **Tema:** CitizenTech (ODS 11 e 9)
@@ -10,7 +10,7 @@
 Se o professor abrir o repositório na minha frente ou perguntar *"Como você organizou o seu projeto?"*, este é o mapa exato e a justificativa de engenharia de cada pasta:
 
 ```text
-pothole-detection-gs/
+GS_Cognitive_1S/
 │
 ├── 📄 .gitignore                ← Regras de exclusão do Git (bloqueia arquivos binários e temporários)
 ├── 📄 README.md                 ← Cartão de visitas com métricas reais, tabelas e instruções de execução
@@ -69,7 +69,7 @@ A avaliação presencial vale **3,0 pontos na minha nota** (1,5 pts para a demon
 2. Abro uma aba com o arquivo **`docs/relatorio.pdf`** aberto (para mostrar as tabelas e gráficos se o professor pedir).
 3. Abro o terminal (PowerShell ou Prompt de Comando) na pasta do projeto:
    ```bash
-   cd C:\Users\...\pothole-detection-gs
+   cd C:\Users\...\GS_Cognitive_1S
    ```
 
 ### 1.2 O Momento da Demonstração Prática (1,5 pts)
@@ -232,3 +232,4 @@ O professor vai olhar o meu código, o PDF e fazer 2 a 3 perguntas conceituais. 
 - [ ] `docs/relatorio.pdf` salvo no computador e acessível no GitHub.
 - [ ] Teste de comando executado previamente: `python src/demo.py --source examples/buraco_rua.jpg --weights models/best.pt --conf 0.15`.
 - [ ] Leitura prévia deste guia de estudo para fixar os meus números: **Precisão: 91,96%**, **Recall: 85,37%**, **mAP@50: 89,02%** e **FPS: ~24 a 111**.
+

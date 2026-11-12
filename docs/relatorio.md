@@ -1,4 +1,4 @@
-# RELATÓRIO TÉCNICO DE ENGENHARIA E PESQUISA
+﻿# RELATÓRIO TÉCNICO DE ENGENHARIA E PESQUISA
 ## Detecção Automatizada de Buracos em Vias Urbanas com YOLOv8 para Apoio à Zeladoria Colaborativa Municipal
 
 **Global Solution 2026.2 — FIAP**  
@@ -236,3 +236,4 @@ Os principais marcos consolidados foram:
 3. **Intel Corporation.** *Intel Unnati Training Program — Pothole Detection Dataset*. Roboflow Universe, 2023. Disponível em: https://universe.roboflow.com/intel-unnati-training-program/pothole-detection-bqu6s.
 4. **Organização das Nações Unidas (ONU).** *Transformando Nosso Mundo: A Agenda 2030 para o Desenvolvimento Sustentável*. Metas do ODS 11 e ODS 9, 2015.
 5. **FIAP.** *Enunciado Oficial da Global Solution 2026.2 — CitizenTech: Da Cidade ao Campo, Tecnologia para a Vida Cotidiana*. Disciplina Cognitive Computing, Computer Vision and IoT Systems, 2026.
+
