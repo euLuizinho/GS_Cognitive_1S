@@ -1,8 +1,62 @@
-# GUIA DE ESTUDO DEFINITIVO & MANUAL DE ARGUIÇÃO INDIVIDUAL
+# GS_Cognitive_1S — GUIA DE ESTUDO DEFINITIVO & MANUAL DE ARGUIÇÃO
 ## Detecção Inteligente de Buracos em Vias Urbanas com YOLOv8
 **FIAP · Global Solution 2026.2 · Cognitive Computing & Computer Vision**  
-**Docente:** Prof. Arnaldo Jr | **Tema:** CitizenTech (ODS 11 e 9)  
-**Modalidade:** Projeto Individual
+**Projeto Individual:** GS_Cognitive_1S | **Docente:** Prof. Arnaldo Jr | **Tema:** CitizenTech (ODS 11 e 9)
+
+---
+
+## 📌 PARTE 0: MAPA E DEFESA DA ESTRUTURA DE PASTAS DO MEU PROJETO
+
+Se o professor abrir o repositório na minha frente ou perguntar *"Como você organizou o seu projeto?"*, este é o mapa exato e a justificativa de engenharia de cada pasta:
+
+```text
+pothole-detection-gs/
+│
+├── 📄 .gitignore                ← Regras de exclusão do Git (bloqueia arquivos binários e temporários)
+├── 📄 README.md                 ← Cartão de visitas com métricas reais, tabelas e instruções de execução
+├── 📄 requirements.txt          ← Lista comentada das bibliotecas Python do ecossistema
+│
+├── 📁 src/                      ← O MOTOR: Scripts modulares em Python (uma função por responsabilidade)
+│   ├── __init__.py              ← Torna a pasta um pacote Python importável
+│   ├── dataset.py               ← Valida pares imagem/rótulo e gera o data.yaml oficial
+│   ├── evaluate.py              ← Avalia o conjunto de teste e extrai o results/metricas.json
+│   ├── analise_erros.py         ← Cataloga 10 Falsos Positivos e 10 Falsos Negativos
+│   ├── demo.py                  ← APLICAÇÃO AO VIVO: inferência com HUD, contador e medidor de FPS
+│   └── gerar_pdf.py             ← Compila o relatório acadêmico para PDF sem sobreposição
+│
+├── 📁 notebooks/                ← O LABORATÓRIO DE TREINAMENTO (Nuvem)
+│   └── train_colab.ipynb        ← Notebook de 9 células executado na GPU T4 do Google Colab
+│
+├── 📁 results/                  ← AS EVIDÊNCIAS: Dados comprovados (NENHUM número inventado)
+│   ├── metricas.json            ← JSON oficial das métricas (P: 91,96%, R: 85,37%, mAP: 89,02%)
+│   ├── curvas_treinamento.png   ← Gráficos de perda (loss) e métricas pelas 50 épocas
+│   ├── confusion_matrix.png     ← Matriz de confusão absoluta
+│   ├── confusion_matrix_normalized.png ← Matriz de confusão normalizada em porcentagem
+│   ├── amostra_predicoes_val.jpg← Lote de teste com caixas ciano e scores calculados
+│   └── amostra_ground_truth_val.jpg ← Lote original com as anotações humanas reais
+│
+├── 📁 models/                   ← OS PESOS TREINADOS
+│   └── best.pt                  ← O "cérebro" da rede: melhor modelo treinado (apenas 6,5 MB)
+│
+├── 📁 examples/                 ← MATERIAL DE DEMONSTRAÇÃO RÁPIDA NA BANCA
+│   ├── buraco_rua.jpg           ← Foto individual de rua com buraco para o demo.py abrir na hora
+│   └── exemplo_buracos.jpg      ← Amostra ampla de teste
+│
+├── 📁 docs/                     ← DOCUMENTAÇÃO ACADÊMICA E ESTUDO
+│   ├── relatorio.md             ← O relatório técnico completo em texto Markdown
+│   ├── relatorio.pdf            ← O PDF oficial diagramado de 4 páginas (entrega no portal)
+│   └── guia_de_estudo.md        ← Meu manual de estudo com conceitos e as 20 perguntas da banca
+│
+└── 📁 data/                     ← DATASET LOCAL (fica no computador, excluído pelo .gitignore)
+```
+
+### Como defender cada pasta perante a banca:
+- **`src/` (Desenvolvimento e Rigor Técnico — Vale 2,5 pts):** Em vez de fazer um código monolítico desorganizado, adotei o princípio da responsabilidade única (Single Responsibility Principle) e desacoplamento. Cada função possui uma docstring clara em português explicando o que faz, parâmetros e por que existe.
+- **`notebooks/` (Reprodutibilidade):** Comprova que o treinamento foi executado de verdade célula por célula em hardware acelerado (GPU Tesla T4 no Colab), sem atalhos.
+- **`results/` (Comprovação das Métricas — Vale 2,0 pts):** Cumpre a regra de ouro de nunca inventar números. Todos os dados do relatório saíram diretamente do `metricas.json` e dos gráficos oficiais de convergência gerados pelo Ultralytics.
+- **`models/` (Pesos):** Guarda o arquivo `best.pt` (6,5 MB), que é o artefato final compilado que o `demo.py` carrega para inferir em tempo real.
+- **`examples/` (Segurança da Apresentação):** Fornece imagens reais prontas para a banca testar na hora sem depender de internet.
+- **`docs/` (Clareza de Documentação — Vale 1,0 pt):** Centraliza o relatório formal exigido no portal e este guia de estudos.
 
 ---
 
@@ -24,7 +78,7 @@ Executo o script de demonstração apontando para a imagem de teste que deixei p
 python src/demo.py --source examples/buraco_rua.jpg --weights models/best.pt --conf 0.15
 ```
 *O que falar enquanto a janela abre na tela:*
-> *"Professor, este é o meu projeto em execução em tempo real. Desenvolvi um detector de objetos baseado na arquitetura YOLOv8n (nano), voltado ao tema CitizenTech da Global Solution. Treinei o modelo individualmente no Google Colab com foco na identificação de buracos e falhas viárias. Na barra superior (HUD), o meu sistema faz a contagem instantânea de buracos identificados e calcula o FPS e a latência de inferência quadro a quadro. Como estou rodando aqui na CPU comum do laboratório, o tempo de inferência é de aproximadamente 35 a 45 ms, o que garante cerca de 24 quadros por segundo — plenamente suficiente para analisar o pavimento a cada meio metro com um veículo trafegando a 50 km/h."*
+> *"Professor, este é o meu projeto em execução em tempo real (GS_Cognitive_1S). Desenvolvi um detector de objetos baseado na arquitetura YOLOv8n (nano), voltado ao tema CitizenTech da Global Solution. Treinei o modelo individualmente no Google Colab com foco na identificação de buracos e falhas viárias. Na barra superior (HUD), o meu sistema faz a contagem instantânea de buracos identificados e calcula o FPS e a latência de inferência quadro a quadro. Como estou rodando aqui na CPU comum do laboratório, o tempo de inferência é de aproximadamente 35 a 45 ms, o que garante cerca de 24 quadros por segundo — plenamente suficiente para analisar o pavimento a cada meio metro com um veículo trafegando a 50 km/h."*
 
 *(Opcional: Se o computador tiver webcam funcional, posso rodar `python src/demo.py --source 0 --weights models/best.pt` e apontar a câmera para uma foto de buraco na tela do meu celular para demonstrar o fluxo contínuo de vídeo).*
 
@@ -69,120 +123,42 @@ O professor vai olhar o meu código, o PDF e fazer 2 a 3 perguntas conceituais. 
 ## 📌 PARTE 3: FICHAS TÉCNICAS DAS FUNÇÕES QUE EU ESCREVI
 
 ### MÓDULO 1: `src/dataset.py`
-
-#### 1. `listar_imagens(pasta: Path) -> list[Path]`
-- **O que faz:** Varre a pasta recursivamente e retorna todos os arquivos com extensões válidas (`.jpg`, `.jpeg`, `.png`, `.bmp`).
-- **Por que criei:** Centraliza as extensões aceitas, evitando repetição de filtros no código.
-
-#### 2. `listar_anotacoes(pasta: Path) -> list[Path]`
-- **O que faz:** Retorna a lista de todos os arquivos de rótulo `.txt` no diretório.
-- **Por que criei:** Isola a leitura de anotações da busca de imagens para validação independente.
-
-#### 3. `verificar_par_imagem_rotulo(img_dir: Path, lbl_dir: Path) -> tuple[int, list[str]]`
-- **O que faz:** Confere se para cada imagem existe um `.txt` com o mesmo nome na pasta de labels.
-- **Por que criei:** Evita erros silenciosos; imagens sem rótulo são tratadas como fundo e distorcem a perda.
-
-#### 4. `validar_formato_rotulo(arquivo_txt: Path) -> list[str]`
-- **O que faz:** Lê linha a linha de cada anotação e valida se há exatamente 5 campos numéricos e se as coordenadas estão em $[0.0, 1.0]$.
-- **Por que criei:** Coordenadas fora da faixa ou textos corrompidos travam o DataLoader do PyTorch no meio do treino.
-
-#### 5. `detectar_classes(lbl_dir: Path) -> list[int]`
-- **O que faz:** Extrai os IDs numéricos únicos presentes na primeira coluna dos rótulos.
-- **Por que criei:** Garante que o arquivo `data.yaml` seja configurado exatamente com as classes reais do dataset.
-
-#### 6. `validar_estrutura_dataset(data_dir: Path) -> dict`
-- **O que faz:** Orquestra a validação completa dos splits (`train`, `val`/`valid`, `test`) e consolida contagens e erros em um dicionário.
-- **Por que criei:** Ponto central de auditoria estrutural antes do treinamento.
-
-#### 7. `gerar_data_yaml(data_dir, classes, output, splits)`
-- **O que faz:** Escreve em disco o arquivo `data.yaml` com caminhos absolutos e nomes das classes no formato padrão Ultralytics.
-- **Por que criei:** Automatiza o contrato de configuração, eliminando erros manuais de caminhos.
-
----
+1. **`listar_imagens(pasta)`**: Varre a pasta e retorna arquivos de imagem válidos (`.jpg`, `.png`, `.bmp`). *Por que criei:* Centraliza extensões aceitas.
+2. **`listar_anotacoes(pasta)`**: Retorna arquivos `.txt` de anotação. *Por que criei:* Isola a leitura de rótulos.
+3. **`verificar_par_imagem_rotulo(img_dir, lbl_dir)`**: Checa paridade entre foto e anotação. *Por que criei:* Evita dados órfãos que poluem o treino.
+4. **`validar_formato_rotulo(arquivo_txt)`**: Valida se há 5 campos numéricos e limites em $[0.0, 1.0]$. *Por que criei:* Previne falhas no DataLoader.
+5. **`detectar_classes(lbl_dir)`**: Identifica IDs numéricos únicos de classes. *Por que criei:* Monta o arquivo YAML correto.
+6. **`validar_estrutura_dataset(data_dir)`**: Valida pastas `train`, `val`, `test`. *Por que criei:* Ponto único de auditoria prévia.
+7. **`gerar_data_yaml(data_dir, classes, output, splits)`**: Escreve o arquivo `data.yaml`. *Por que criei:* Configuração automática do Ultralytics.
 
 ### MÓDULO 2: `src/evaluate.py`
-
-#### 8. `carregar_modelo_yolo(caminho_pesos: Path) -> YOLO`
-- **O que faz:** Instancia o modelo YOLO a partir de um arquivo `.pt`, checando previamente se o arquivo existe.
-- **Por que criei:** Falha rápido (*fail-fast*) com mensagem clara caso os pesos não estejam presentes.
-
-#### 9. `verificar_split_disponivel(caminho_yaml: Path, split_desejado: str) -> str`
-- **O que faz:** Verifica se o split `test` existe no YAML; se não existir, adota o split `val` como alternativa segura.
-- **Por que criei:** Previne exceções caso o dataset use nomenclaturas alternativas de partição.
-
-#### 10. `executar_avaliacao(modelo, caminho_yaml, split, imgsz, conf, iou) -> object`
-- **O que faz:** Executa o método nativo `.val()` da biblioteca Ultralytics no conjunto selecionado.
-- **Por que criei:** Padroniza o cálculo das métricas oficiais de detecção (P, R, mAP) com NMS formal.
-
-#### 11. `extrair_dicionario_metricas(resultados_val, split_utilizado) -> dict`
-- **O que faz:** Converte o objeto interno do Ultralytics em um dicionário Python limpo com 4 casas decimais e tempos de latência.
-- **Por que criei:** Desacopla a estrutura interna de bibliotecas terceiras do restante da minha aplicação.
-
-#### 12. `salvar_metricas_json(metricas: dict, caminho_arquivo: Path) -> None`
-- **O que faz:** Serializa o dicionário de métricas em formato JSON indentado.
-- **Por que criei:** Garante a comprovação estrita das métricas sem digitação manual, alimentando o relatório e o README.
-
-#### 13. `copiar_artefatos_graficos(diretorio_origem, diretorio_destino) -> list[str]`
-- **O que faz:** Copia os gráficos de matriz de confusão e curvas PxR da pasta de runs para a pasta `results/`.
-- **Por que criei:** Mantém o repositório organizado e os artefatos prontos para compilação no relatório PDF.
-
----
+8. **`carregar_modelo_yolo(caminho_pesos)`**: Instancia o modelo YOLO validando se o `.pt` existe. *Por que criei:* Tratamento robusto de erro.
+9. **`verificar_split_disponivel(caminho_yaml, split)`**: Aplica fallback para `val` se `test` não constar no YAML. *Por que criei:* Flexibilidade entre datasets.
+10. **`executar_avaliacao(modelo, caminho_yaml, ...)`**: Roda o pipeline nativo de `.val()` do Ultralytics. *Por que criei:* Cálculo padronizado de métricas.
+11. **`extrair_dicionario_metricas(resultados_val, split)`**: Extrai precisão, recall, mAP e tempos de latência. *Por que criei:* Desacopla da biblioteca.
+12. **`salvar_metricas_json(metricas, caminho)`**: Salva o arquivo `results/metricas.json`. *Por que criei:* Comprovação auditável sem números manuais.
+13. **`copiar_artefatos_graficos(origem, destino)`**: Transfere gráficos para `results/`. *Por que criei:* Mantém relatórios integrados.
 
 ### MÓDULO 3: `src/analise_erros.py`
-
-#### 14. `carregar_rotulos_ground_truth(caminho_txt, largura_img, altura_img) -> list[dict]`
-- **O que faz:** Desnormaliza as coordenadas relativas do YOLO para pixels absolutos $[x_1, y_1, x_2, y_2]$.
-- **Por que criei:** Necessário para permitir o cálculo exato de sobreposição de IoU e desenho com OpenCV.
-
-#### 15. `calcular_iou(box_a: list, box_b: list) -> float`
-- **O que faz:** Calcula a razão entre a área de interseção e a área de união entre dois retângulos.
-- **Por que criei:** Função fundamental para definir matematicamente se uma detecção acertou ou errou o alvo.
-
-#### 16. `categorizar_predicoes_imagem(caixas_gt, predicoes, iou_limiar) -> tuple`
-- **O que faz:** Compara predições com Ground Truths e classifica em Verdadeiros Positivos (TP), Falsos Positivos (FP) e Falsos Negativos (FN).
-- **Por que criei:** Constrói a base analítica para entender exatamente onde o modelo está falhando.
-
-#### 17. `desenhar_anotacoes_erro(imagem_bgr, caixas_gt, caixas_fp, caixas_fn) -> np.ndarray`
-- **O que faz:** Pinta as caixas na imagem com cores semânticas: Verde (GT real), Vermelho (FP) e Laranja (FN).
-- **Por que criei:** Torna a visualização dos erros autoexplicativa para apresentação em banca.
-
-#### 18. `mapear_padroes_visuais_recorrentes() -> dict`
-- **O que faz:** Retorna a categorização técnica das causas físicas de erros (sombras, remendos, reflexos em poças).
-- **Por que criei:** Fornece embasamento científico e qualitativo para a arguição técnica.
-
----
+14. **`carregar_rotulos_ground_truth(txt, larg, alt)`**: Desnormaliza $[cx, cy, w, h]$ para pixels absolutos. *Por que criei:* Permite cálculo exato de IoU.
+15. **`calcular_iou(box_a, box_b)`**: Calcula a sobreposição espacial. *Por que criei:* Base matemática da classificação de acertos e erros.
+16. **`categorizar_predicoes_imagem(gt, pred, iou)`**: Classifica em TP, FP e FN. *Por que criei:* Isola e conta as falhas do modelo.
+17. **`desenhar_anotacoes_erro(img, gt, fp, fn)`**: Desenha Verde=GT, Vermelho=FP, Laranja=FN. *Por que criei:* Visualização autoexplicativa.
+18. **`mapear_padroes_visuais_recorrentes()`**: Mapeia causas físicas de falhas (sombras, remendos). *Por que criei:* Embasamento qualitativo para banca.
 
 ### MÓDULO 4: `src/demo.py`
-
-#### 19. `carregar_detector_yolo(caminho_pesos: Path, device: str) -> YOLO`
-- **O que faz:** Carrega os pesos e aloca a rede no hardware disponível (`cuda` se houver placa NVIDIA, ou `cpu`).
-- **Por que criei:** Garante que a aplicação funcione em qualquer computador da faculdade sem quebrar.
-
-#### 20. `determinar_tipo_fonte(fonte_str: str) -> tuple`
-- **O que faz:** Checa se a entrada é um dígito (webcam), arquivo de vídeo (`.mp4`) ou foto (`.jpg`).
-- **Por que criei:** Permite que um único script atenda a qualquer modalidade de demonstração.
-
-#### 21. `executar_inferencia_frame(modelo, frame, conf, iou, imgsz) -> tuple`
-- **O que faz:** Executa a predição na matriz de imagem e cronometra milissegundos puros de inferência.
-- **Por que criei:** Isola a medição de tempo do modelo sem somar o tempo gasto para desenhar no OpenCV.
-
-#### 22. `desenhar_deteccoes_frame(frame: np.ndarray, deteccoes: list) -> np.ndarray`
-- **O que faz:** Desenha os retângulos ciano e etiquetas com classe e confiança formatada.
-- **Por que criei:** Gera contraste visual nítido para projeção em telão ou monitor.
-
-#### 23. `desenhar_hud_informacoes(frame, total_buracos, fps, latencia_ms) -> np.ndarray`
-- **O que faz:** Renderiza a barra escura superior com contador de buracos e taxa de quadros por segundo (FPS).
-- **Por que criei:** Cumpre a exigência explícita do enunciado da matéria de exibir contagem e FPS ao vivo.
-
-#### 24. `processar_modo_imagem(...)` e `processar_modo_stream(...)`
-- **O que faz:** Controlam os loops de exibição de imagem estática ou fluxo contínuo de vídeo/webcam com tratamento de tecla `q` e `s`.
-- **Por que criei:** Separa a lógica de fluxo para manter o código desacoplado e responsivo.
+19. **`carregar_detector_yolo(pesos, device)`**: Inicializa modelo em CUDA ou CPU. *Por que criei:* Portabilidade para o PC do laboratório.
+20. **`determinar_tipo_fonte(fonte_str)`**: Reconhece se é webcam (`0`), vídeo (`.mp4`) ou foto (`.jpg`). *Por que criei:* Versatilidade de apresentação.
+21. **`executar_inferencia_frame(modelo, frame, ...)`**: Roda o forward pass e cronometra milissegundos. *Por que criei:* Medição precisa de latência.
+22. **`desenhar_deteccoes_frame(frame, deteccoes)`**: Desenha bboxes ciano e rótulos legíveis. *Por que criei:* Contraste nítido para telão.
+23. **`desenhar_hud_informacoes(frame, buracos, fps, latencia)`**: Renderiza o painel superior. *Por que criei:* Exigência explícita do enunciado da matéria.
+24. **`processar_modo_imagem()` / `processar_modo_stream()`**: Gerenciam loops e teclas `q` (sair) e `s` (screenshot). *Por que criei:* Separação limpa de fluxo.
 
 ---
 
 ## 📌 PARTE 4: AS 20 PERGUNTAS MAIS PROVÁVEIS DA BANCA (RESPOSTAS INDIVIDUAIS)
 
-### Perguntas sobre Problema e Alinhamento CitizenTech
+### Problema e Alinhamento CitizenTech
 **1. Por que este projeto é classificado como CitizenTech e não apenas uma solução governamental tradicional?**  
 *Resposta:* "Porque desenvolvi a solução a partir da necessidade real do cidadão comum e para rodar em dispositivos acessíveis (smartphones e câmeras veiculares de baixo custo), democratizando o monitoramento do espaço público. Em vez de depender de burocracias ou ouvidorias lentas, qualquer cidadão ou motorista de transporte público atua como agente colaborativo da zeladoria urbana."
 
@@ -192,7 +168,7 @@ O professor vai olhar o meu código, o PDF e fazer 2 a 3 perguntas conceituais. 
 **3. Qual é o diferencial prático de usar Visão Computacional em vez de acelerômetros em smartphones?**  
 *Resposta:* "Acelerômetros só registram o impacto mecânico *depois* que a roda já caiu no buraco, gerando desconforto e risco de acidente imediato. A Visão Computacional atua de forma preditiva e ótica: enxerga a descontinuidade a metros de distância antes que o veículo passe por ela, além de fornecer o registro visual objetivo do dano."
 
-### Perguntas sobre Dados e Dataset
+### Dados e Dataset
 **4. Qual dataset você utilizou, qual a licença e quantas imagens ele possui?**  
 *Resposta:* "Utilizei o Pothole Detection Dataset do Intel Unnati Training Program, hospedado no Roboflow Universe sob licença MIT (permissiva para pesquisa acadêmica). Ele contém mais de 2.700 imagens veiculares reais. O meu conjunto de validação independente utilizou 491 imagens contendo 1.079 anotações."
 
@@ -202,7 +178,7 @@ O professor vai olhar o meu código, o PDF e fazer 2 a 3 perguntas conceituais. 
 **6. Como você garantiu que não houve vazamento de dados (data leakage)?**  
 *Resposta:* "Mantive a separação estrita dos dados em splits isolados de treino e validação desde o download, e o meu script `src/dataset.py` validou a integridade e paridade dos arquivos sem compartilhamento de imagens entre os grupos."
 
-### Perguntas sobre Arquitetura e Modelagem
+### Arquitetura e Modelagem
 **7. Por que você escolheu o YOLOv8n (nano) em vez de versões maiores como YOLOv8m ou YOLOv8x?**  
 *Resposta:* "Por um compromisso de engenharia voltado a Edge Computing. O YOLOv8n possui apenas 3,13 milhões de parâmetros e 8,6 GFLOPs (~6,5 MB no disco). Uma versão maior consumiria muita memória e bateria, inviabilizando a execução em tempo real em smartphones ou CPUs sem placa de vídeo dedicada."
 
@@ -215,7 +191,7 @@ O professor vai olhar o meu código, o PDF e fazer 2 a 3 perguntas conceituais. 
 **10. Quais funções de perda (losses) compõem a função de custo do YOLOv8?**  
 *Resposta:* "Uma perda combinada com três termos: CIoU Loss para penalizar erros de proporção e localização espacial da caixa; Binary Cross-Entropy (BCE) para a classificação das categorias; e Distribution Focal Loss (DFL) para refinar com precisão os contornos e limites irregulares das bordas."
 
-### Perguntas sobre Métricas e Resultados
+### Métricas e Resultados
 **11. Quais foram as métricas finais obtidas no seu modelo?**  
 *Resposta:* "No conjunto de validação com 491 imagens e 1.079 instâncias, obtive 91,96% de Precisão, 85,37% de Recall, 89,02% de mAP@50 e 58,56% de mAP@50-95, com inferência média de 4,8 ms em GPU e cerca de 42 ms em CPU local."
 
@@ -228,7 +204,7 @@ O professor vai olhar o meu código, o PDF e fazer 2 a 3 perguntas conceituais. 
 **14. O que é o mAP@50 e por que ele é a métrica principal em detecção de objetos?**  
 *Resposta:* "O mAP@50 é a Média da Precisão Média calculada sob um limiar de sobreposição IoU de 50%. Ele sintetiza em um único número a qualidade da curva Precisão $\times$ Recall em todos os níveis de confiança. O meu resultado de 89,02% comprova alta estabilidade do detector."
 
-### Perguntas sobre Análise Crítica e Diagnóstico de Erros
+### Análise Crítica e Diagnóstico de Erros
 **15. Quais são os principais casos em que o seu modelo gera Falsos Positivos (alarmes falsos)?**  
 *Resposta:* "Principalmente sombras recortadas de copas de árvores em dias de sol a pino, pois a sombra irregular sobre o asfalto cinza claro cria um gradiente de borda que simula a cavidade escura de um buraco. Outro caso são remendos recentes de asfalto novo com piche muito preto em contraste com pistas velhas."
 
@@ -238,7 +214,7 @@ O professor vai olhar o meu código, o PDF e fazer 2 a 3 perguntas conceituais. 
 **17. Como esses erros poderiam ser mitigados em uma versão 2.0 da sua solução?**  
 *Resposta:* "Através de rastreamento temporal (*tracking*) entre quadros consecutivos (uma sombra se move diferente de um buraco fixo na via), fusão sensorial com acelerômetros do veículo e expansão do dataset com exemplos rotulados de chuva e pavimento molhado."
 
-### Perguntas sobre Código, Arquitetura e Engenharia de Software
+### Código e Engenharia de Software
 **18. Como o seu código está estruturado para garantir manutenção e clareza?**  
 *Resposta:* "Segui o princípio da responsabilidade única (Single Responsibility Principle): cada função tem uma docstring detalhada em português explicando o que faz, parâmetros e o porquê de existir. Desacoplei o pipeline em quatro módulos: `dataset.py` (validação e YAML), `evaluate.py` (métricas oficiais e JSON), `analise_erros.py` (diagnóstico qualitativo de FPs/FNs) e `demo.py` (visualização em tempo real)."
 
