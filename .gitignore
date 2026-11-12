@@ -1,31 +1,29 @@
 # ============================================================
-# .gitignore — Detecção de Buracos em Vias Urbanas (YOLO)
+# .gitignore — Detecção de Buracos em Vias Urbanas (YOLOv8)
 # ============================================================
 
-# ----- Dataset (NÃO versionar imagens/anotações) -----------
+# ----- Dataset (NÃO versionar imagens e anotações brutas) ---
 data/
-*.jpg
-*.jpeg
-*.png
-*.bmp
-*.mp4
-*.avi
-*.mov
+datasets/
+*.zip
+*.tar
+*.gz
 
-# ----- Modelos treinados (pesos podem ser grandes) ---------
-models/*.pt
-models/*.onnx
+# ----- Modelos treinados grandes (pesos binários pesados) ----
+# models/best.pt pode ser preservado ou adicionado via releases
 models/*.engine
-models/*.pth
-# Exceção: manter o arquivo de placeholder
+models/*.onnx
 !models/.gitkeep
 
-# ----- Resultados gerados por scripts ---------------------
-results/
-# Exceção: manter o placeholder
+# ----- Resultados e Comprovações de Métricas (GS FIAP) ------
+# Permite versionar as métricas oficiais e gráficos de comprovação
+results/*
 !results/.gitkeep
+!results/*.json
+!results/*.png
+!results/*.jpg
 
-# ----- Python ------------------------------------------
+# ----- Python e Bytecode ------------------------------------
 __pycache__/
 *.py[cod]
 *$py.class
@@ -34,21 +32,19 @@ __pycache__/
 build/
 dist/
 *.egg-info/
-.eggs/
-*.egg
 
-# ----- Ambientes virtuais ------------------------------
+# ----- Ambientes virtuais ----------------------------------
 env/
 venv/
 .env
 .venv
 ENV/
 
-# ----- Jupyter ----------------------------------------
+# ----- Jupyter Notebooks ------------------------------------
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# ----- IDEs e editores --------------------------------
+# ----- IDEs e Editores --------------------------------------
 .vscode/
 .idea/
 *.swp
@@ -57,14 +53,9 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# ----- Logs e temporários -----------------------------
+# ----- Logs de Execução e Runs Temporárias ------------------
 *.log
 runs/
 wandb/
 mlruns/
 *.tmp
-
-# ----- Credenciais ------------------------------------
-*.key
-*.pem
-secrets.yaml

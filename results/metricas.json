@@ -1,0 +1,56 @@
+{
+    "split_avaliado": "val",
+    "data_avaliacao": "2026-11-12T16:55:00-03:00",
+    "hardware_avaliacao": "NVIDIA Tesla T4 (15GB VRAM)",
+    "framework": "Ultralytics YOLOv8.4.211 (PyTorch 2.14.1+cu130)",
+    "modelo": {
+        "variante": "YOLOv8n (nano)",
+        "camadas": 73,
+        "parametros": 3133193,
+        "gflops": 8.6
+    },
+    "amostras": {
+        "imagens_validacao": 491,
+        "total_anotacoes": 1079,
+        "backgrounds": 3
+    },
+    "geral": {
+        "precisao": 0.9196,
+        "recall": 0.8537,
+        "map50": 0.8902,
+        "map50_95": 0.5856
+    },
+    "velocidade_ms": {
+        "preprocessamento": 1.8,
+        "inferencia": 4.8,
+        "posprocessamento": 2.4,
+        "total_por_imagem": 9.0,
+        "fps_gpu_t4": 111.1
+    },
+    "classes": {
+        "Drain Hole": {
+            "id": 0,
+            "instancias": 14,
+            "precisao": 0.9700,
+            "recall": 0.9290,
+            "map50": 0.9250,
+            "map50_95": 0.6080
+        },
+        "Pothole": {
+            "id": 1,
+            "instancias": 1025,
+            "precisao": 0.8970,
+            "recall": 0.7820,
+            "map50": 0.8680,
+            "map50_95": 0.6060
+        },
+        "Sewer Cover": {
+            "id": 2,
+            "instancias": 40,
+            "precisao": 0.8920,
+            "recall": 0.8500,
+            "map50": 0.8780,
+            "map50_95": 0.5430
+        }
+    }
+}
