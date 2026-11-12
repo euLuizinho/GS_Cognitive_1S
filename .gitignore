@@ -1,0 +1,70 @@
+# ============================================================
+# .gitignore — Detecção de Buracos em Vias Urbanas (YOLO)
+# ============================================================
+
+# ----- Dataset (NÃO versionar imagens/anotações) -----------
+data/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.mp4
+*.avi
+*.mov
+
+# ----- Modelos treinados (pesos podem ser grandes) ---------
+models/*.pt
+models/*.onnx
+models/*.engine
+models/*.pth
+# Exceção: manter o arquivo de placeholder
+!models/.gitkeep
+
+# ----- Resultados gerados por scripts ---------------------
+results/
+# Exceção: manter o placeholder
+!results/.gitkeep
+
+# ----- Python ------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# ----- Ambientes virtuais ------------------------------
+env/
+venv/
+.env
+.venv
+ENV/
+
+# ----- Jupyter ----------------------------------------
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ----- IDEs e editores --------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ----- Logs e temporários -----------------------------
+*.log
+runs/
+wandb/
+mlruns/
+*.tmp
+
+# ----- Credenciais ------------------------------------
+*.key
+*.pem
+secrets.yaml

@@ -1,0 +1,32 @@
+# Dependências — Detecção de Buracos em Vias Urbanas
+# Testado com Python 3.10+ e CUDA 11.8 / CPU
+# Para instalar: pip install -r requirements.txt
+
+# ---- Visão Computacional e YOLO ----
+ultralytics>=8.2.0        # Framework YOLO (YOLOv8/v11); inclui treino, eval e inferência
+opencv-python>=4.9.0      # Leitura e manipulação de imagens e vídeos
+
+# ---- Processamento numérico --------
+numpy>=1.26.0
+scipy>=1.12.0
+
+# ---- Visualização e relatórios -----
+matplotlib>=3.8.0         # Curvas P×R, matrizes de confusão
+seaborn>=0.13.0           # Heatmaps para matriz de confusão
+Pillow>=10.2.0            # Manipulação de imagens (usado pelo ultralytics)
+
+# ---- Manipulação de dados ----------
+pandas>=2.2.0             # Leitura de CSVs de métricas gerados pelo ultralytics
+PyYAML>=6.0               # Leitura/escrita do data.yaml
+
+# ---- Notebook (Colab já inclui, mas útil localmente) ----
+ipykernel>=6.29.0
+ipywidgets>=8.1.0
+
+# ---- Exportação de relatório --------
+fpdf2>=2.7.9              # Geração do PDF do relatório (alternativa: md -> pdf via pandoc)
+
+# ---- Utilitários --------------------
+tqdm>=4.66.0              # Barras de progresso
+requests>=2.31.0          # Download de datasets
+gdown>=5.1.0              # Download do Google Drive (pesos/exemplos)
