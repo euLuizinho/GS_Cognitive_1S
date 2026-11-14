@@ -111,7 +111,6 @@ GS_Cognitive_1S/
 └── docs/                    # Relatório acadêmico e guia da arguição
     ├── relatorio.md         # Relatório técnico completo formatado
     ├── relatorio.pdf        # Documento exportado para entrega no portal
-    └── guia_de_estudo.md    # Fichas de função, conceitos e 20 perguntas da banca
 ```
 
 ---
@@ -210,4 +209,5 @@ A avaliação qualitativa conduzida por `src/analise_erros.py` identificou os pa
 - **Redmon, J., Divvala, S., Girshick, R., & Farhadi, A.** (2016). *You Only Look Once: Unified, Real-Time Object Detection*. IEEE Conference on Computer Vision and Pattern Recognition (CVPR).
 - **Organização das Nações Unidas (ONU).** *Objetivo de Desenvolvimento Sustentável 11: Cidades e Comunidades Sustentáveis*. Agenda 2030.
 - **FIAP.** *Enunciado Oficial da Global Solution 2026.2 — CitizenTech: Da Cidade ao Campo, Tecnologia para a Vida Cotidiana*. Disciplina Cognitive Computing, Computer Vision and IoT Systems (Prof. Arnaldo Jr).
+
 
